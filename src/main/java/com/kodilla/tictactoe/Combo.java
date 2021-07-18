@@ -17,7 +17,7 @@ public class Combo {
         int count = 0;
         for(int i=0;i<3;i++)
         {
-            if(tiles[i].getValue()=="X")
+            if(tiles[i].getValue().equals("X"))
             {
                 count++;
             }
@@ -28,7 +28,7 @@ public class Combo {
         int count = 0;
         for(int i=0;i<3;i++)
         {
-            if(tiles[i].getValue()=="O")
+            if(tiles[i].getValue().equals("O"))
             {
                 count++;
             }

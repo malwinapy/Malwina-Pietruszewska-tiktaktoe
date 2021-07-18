@@ -33,9 +33,7 @@ public class Main extends Application {
         Button resetButton = new Button("New Game");
         resetButton.setFont(new Font("Arial", 20));
         VBox controlPanel = new VBox(5);
-        resetButton.setOnMouseClicked(event -> {
-            Game.reset();
-        });
+        resetButton.setOnMouseClicked(event -> Game.reset());
         controlPanel.setLayoutX(650);
         controlPanel.setLayoutY(100);
         controlPanel.getChildren().add(userScore);

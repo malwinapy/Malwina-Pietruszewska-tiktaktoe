@@ -12,31 +12,24 @@ public class Game {
     public static int round = 0;
     public static Tile[][] tile = new Tile[3][3];
     public static List<Combo> combos = new ArrayList<>();
-    public Game()
-    {
-        playable = true;
-        turnX = true;
-        scoreX = 0;
-        scoreCom = 0;
-        draw = 0;
-        round = 0;
-    }
+
+    public Game(){ }
+
     public static void checkState() {
         if(!Game.playable) return;
         for (Combo combo : combos) {
             if (combo.isComplete()) {
                 playable = false;
                 Main.playWinAnimation(combo);
-                if(combo.tiles[0].getValue() == "X") {
+                if(combo.tiles[0].getValue().equals("X")) {
                     scoreX++;
                     Main.userScore.setText("User Score: " + scoreX);
-                    return;
                 }
                 else {
                     scoreCom++;
                     Main.computerScore.setText("Computer Score: " + scoreCom);
-                    return;
                 }
+                return;
             }
         }
         round++;
@@ -53,11 +46,9 @@ public class Game {
         int valO;
         int maxValX=-1;
         int maxValO=-1;
-        int maxSecond = -1;
         int check = 0;
         Combo maxX=null;
         Combo maxO=null;
-        Combo secondaryChoose=null;
         if(!Game.playable) return;
         for (Combo combo : combos) {
             valX = combo.countX();
@@ -71,15 +62,13 @@ public class Game {
                 maxO = combo;
             }
             if(valX>valO) {
-                secondaryChoose = maxX;
             }
             else {
-                secondaryChoose = maxO;
             }
         }
         if(maxValX>maxValO) {
             for(int i=0;i<3;i++) {
-                if(maxX.tiles[i].getValue()=="") {
+                if(maxX.tiles[i].getValue().equals("")) {
                     maxX.tiles[i].text.setText("O");
                     check = 1;
                     break;
@@ -88,7 +77,7 @@ public class Game {
         }
         else {
             for(int i=0;i<3;i++) {
-                if (maxO.tiles[i].getValue() == "") {
+                if (maxO.tiles[i].getValue().equals("")) {
                     maxO.tiles[i].text.setText("O");
                     System.out.println("need to win");
                     check = 1;
@@ -101,7 +90,7 @@ public class Game {
         if(check==0) {
             for(Tile[] title : tile) {
                 for(Tile temp: title) {
-                    if(temp.getValue()=="")
+                    if(temp.getValue().equals(""))
                     {
                         temp.text.setText("O");
                         check = 1;

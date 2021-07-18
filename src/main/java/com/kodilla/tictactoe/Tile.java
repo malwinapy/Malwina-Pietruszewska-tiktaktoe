@@ -23,7 +23,7 @@ public class Tile extends StackPane {
 
         setOnMouseClicked(event -> {
             if (event.getButton() == MouseButton.PRIMARY && Game.playable) {
-                if (Game.turnX && text.getText()=="")
+                if (Game.turnX && text.getText().equals(""))
                 {
                     drawX();
                     Game.turnX = false;
